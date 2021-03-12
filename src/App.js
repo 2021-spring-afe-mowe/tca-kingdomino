@@ -55,7 +55,7 @@ const App = () => (
 
 <Container className="p-3">
       <Jumbotron>
-        <h1 className="header">Welcome To React-Bootstrap</h1>
+        <h1 className="header">Welcome to Kingdomino Companion App</h1>
         <h2>
           Current Page is{' '}
           <Switch>
