@@ -14,9 +14,9 @@ import './App.css';
 
 const Home = () => <span>Home</span>;
 
-const About = () => <span>About</span>;
+const Stats = () => <span>Stats</span>;
 
-const Users = () => <span>Users</span>;
+const Leaderboard = () => <span>Leaderboard</span>;
 
 const App = () => (
   
@@ -25,28 +25,28 @@ const App = () => (
   <>
   <Container>
   <Navbar bg="light" variant="light">
-    <Navbar.Brand href="#home">tca-kingdomino</Navbar.Brand>
+    <Navbar.Brand href="/">tca-kingdomino</Navbar.Brand>
     <Nav className="mr-auto">
-    
-    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
       
             <LinkContainer to="/">
-            <li class="nav-item">
-              <a class="nav-link active">Home</a>
-            </li>
+            <Nav.Item as="li">
+              <Nav.Link  as="a" to="/">Home</Nav.Link>
+            </Nav.Item>
             </LinkContainer>
       
-      <li class="nav-item">     
-            <LinkContainer to="/about">
-              <a class="nav-link active">About</a>
+           
+            <LinkContainer to="/stats">
+            <Nav.Item as="li">
+              <Nav.Link as="a" to="/stats">Stats</Nav.Link>
+            </Nav.Item>
             </LinkContainer>
-      </li>
-      <li class="nav-item"> 
-            <LinkContainer to="/users">
-              <a class="nav-link active">Users</a>         
+       
+            <LinkContainer to="/leaderboard">
+            <Nav.Item as="li">
+              <Nav.Link as="a" to="/leaderboard"> Leaderboard</Nav.Link>
+            </Nav.Item>        
             </LinkContainer>
-      </li>       
-    </ul> 
+
     </Nav>
   </Navbar>
   
@@ -59,17 +59,22 @@ const App = () => (
         <h2>
           Current Page is{' '}
           <Switch>
-            <Route path="/about">
-              <About />
+            <Route path="/stats">
+              <Stats />
             </Route>
-            <Route path="/users">
-              <Users />
+            <Route path="/leaderboard">
+              <Leaderboard />
             </Route>
             <Route path="/">
               <Home />
             </Route>
           </Switch>
         </h2>
+        
+        <Button variant="primary" size="lg" block>
+    New Game
+  </Button>
+        
       </Jumbotron>
     </Container>
   </MemoryRouter>
