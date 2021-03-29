@@ -10,15 +10,70 @@ import Button from 'react-bootstrap/Button';
 import ButtonToolbar from 'react-bootstrap/ButtonToolbar';
 import { LinkContainer } from 'react-router-bootstrap';
 
-import './App.css';
+import { Home } from './Home';
 
-const Home = () => <span>Home</span>;
+import { useState } from 'react';
+
+import './App.css';
 
 const Stats = () => <span>Stats</span>;
 
 const Leaderboard = () => <span>Leaderboard</span>;
 
-const App = () => (
+function App() {
+
+  const initialAppData = {
+    gameResults: []
+    , currentGameStartTime: null
+  };
+
+  const [appData, updateAppData] = useState(initialAppData);
+
+  console.log(appData);
+
+  // App notification functions
+
+  const startGame = () => {
+    updateAppData({
+      ...appData
+      , currentGameStartTime: Date.now()
+    });
+
+    console.log("App.startGame()", appData.currentGameStartTime);
+  }
+
+  const winGame = () => {
+    updateAppData({
+      ...appData
+      , gameResults: [
+        ...appData.gameResults
+        , {
+          startDateTime: appData.currentGameStartTime
+          , endDateTime: Date.now()
+          , gameResult: "W"
+        }
+      ]
+    })
+  }
+
+  const loseGame = () => {
+    updateAppData({
+      ...appData
+      , gameResults: [
+        ...appData.gameResults
+        , {
+          startDateTime: appData.currentGameStartTime
+          , endDateTime: Date.now()
+          , gameResult: "L"
+        }
+      ]
+    })
+  }
+
+
+
+
+  return (
   
   <MemoryRouter>
     
@@ -66,18 +121,19 @@ const App = () => (
               <Leaderboard />
             </Route>
             <Route path="/">
-              <Home />
+              <Home 
+                totalNumberOfGames={appData.gameResults.length}
+                appStartGame={startGame}
+              />
             </Route>
           </Switch>
         </h2>
-        
-        <Button variant="primary" size="lg" block>
-    New Game
-  </Button>
-        
       </Jumbotron>
     </Container>
   </MemoryRouter>
-);
+
+  );
+
+};
 
 export default App;
