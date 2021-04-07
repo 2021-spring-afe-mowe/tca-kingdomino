@@ -12,9 +12,13 @@ import { LinkContainer } from 'react-router-bootstrap';
 
 import { Home } from './Home';
 
+import { Play } from './Play';
+
 import { useState } from 'react';
 
 import './App.css';
+
+// const Play = () => <span>Play</span>;
 
 const Stats = () => <span>Stats</span>;
 
@@ -116,6 +120,9 @@ function App() {
           <Switch>
             <Route path="/stats">
               <Stats />
+            </Route>
+            <Route path="/play">
+              <Play />
             </Route>
             <Route path="/leaderboard">
               <Leaderboard />
