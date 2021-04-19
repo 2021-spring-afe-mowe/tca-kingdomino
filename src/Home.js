@@ -24,5 +24,5 @@ export const Home = ({
                 New Game
             </Button>
         </>
-    )
+    );
 }
