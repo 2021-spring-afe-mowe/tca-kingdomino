@@ -14,13 +14,15 @@ import { Home } from './Home';
 
 import { Play } from './Play';
 
+import { Stats } from './Stats';
+
 import { useState } from 'react';
 
 import './App.css';
 
 // const Play = () => <span>Play</span>;
 
-const Stats = () => <span>Stats</span>;
+// const Stats = () => <span>Stats</span>;
 
 const Leaderboard = () => <span>Leaderboard</span>;
 
@@ -124,10 +126,11 @@ function App() {
       <Jumbotron>
         <h1 className="header">Welcome to Kingdomino Companion App</h1>
         <h2>
-          Current Page is{' '}
           <Switch>
             <Route path="/stats">
-              <Stats />
+              <Stats 
+                totalNumberOfGames={appData.gameResults.length}
+              />
             </Route>
             <Route path="/play">
               <Play

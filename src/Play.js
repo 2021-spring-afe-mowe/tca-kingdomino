@@ -2,6 +2,7 @@ import React from 'react';
 import { useHistory } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
+import ReactDOM from 'react-dom';
 
 export const Play = ({
     appWinGame
@@ -13,6 +14,7 @@ export const Play = ({
     const winGame = () => {
         appWinGame();
         history.goBack();
+
     };
 
     const loseGame = () => {
@@ -22,9 +24,9 @@ export const Play = ({
 
     return (
         <>
-            <h1>
-                Play
-            </h1>
+            <h2>
+                Enter game details:
+            </h2>
 
             <Form>
                 <Form.Group controlId="formName">
@@ -39,22 +41,23 @@ export const Play = ({
 
                 <Button
                     onClick={winGame}
+                    type="submit"
                 >
                     Win
                 </Button>
                 &nbsp;
                 <Button
                     onClick={loseGame}
+                    type="submit"
                 >
                     Lose
                 </Button>
-
-                <Button variant="primary" type="submit">
-                    Submit
-                </Button>
+                
             </Form>
 
             
         </>
     );
+
+    
 };

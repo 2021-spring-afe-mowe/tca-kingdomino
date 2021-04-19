@@ -16,9 +16,9 @@ export const Home = ({
 
     return(
         <>
-            <h1>
+            <h2>
                 Ready to play?
-            </h1>
+            </h2>
 
             <Button variant="primary" onClick={startGame}>
                 New Game

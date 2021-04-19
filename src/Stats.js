@@ -2,7 +2,7 @@ import React from 'react';
 import { useHistory } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
 
-export const Home = ({
+export const Stats = ({
     totalNumberOfGames
     , totalNumberOfWins
     , totalNumberOfLosses
@@ -12,11 +12,13 @@ export const Home = ({
 
     return(
         <>
-        <h1>
+        <h2>
             Games: ({totalNumberOfGames})
+            <br/>
             Wins: ({totalNumberOfWins})
+            <br/>
             Losses: ({totalNumberOfLosses})
-        </h1>
+        </h2>
         </>
     );
 }
