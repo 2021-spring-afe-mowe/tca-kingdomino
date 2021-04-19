@@ -74,7 +74,15 @@ function App() {
     })
   }
 
+  const calculateGameTimeFacts = () => {
+    
+    const gameTimes = appData.gameResults.map(x => x.endDateTime - x.startDateTime);
 
+    return {
+      longest: Math.max(...gameTimes)
+      , shortest: Math.min(...gameTimes)
+    };
+  };
 
 
   return (
@@ -122,16 +130,20 @@ function App() {
               <Stats />
             </Route>
             <Route path="/play">
-              <Play />
+              <Play
+                appWinGame={winGame}
+                appLoseGame={loseGame}
+              />
             </Route>
             <Route path="/leaderboard">
               <Leaderboard />
             </Route>
             <Route path="/">
-              <Home 
-                totalNumberOfGames={appData.gameResults.length}
-                appStartGame={startGame}
-              />
+            <Home
+            totalNumberOfGames={appData.gameResults.length}
+            appStartGame={startGame}
+            gameTimeFacts={calculateGameTimeFacts()}
+          />
             </Route>
           </Switch>
         </h2>

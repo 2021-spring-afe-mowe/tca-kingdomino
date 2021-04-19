@@ -4,21 +4,26 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 
 export const Play = ({
-    totalNumberOfGames
-    , appStartGame
+    appWinGame
+    , appLoseGame
 }) => {
 
     const history = useHistory();
 
-    const startGame = () => {
-        appStartGame();
-        history.push("/play");
+    const winGame = () => {
+        appWinGame();
+        history.goBack();
     };
 
-    return(
+    const loseGame = () => {
+        appLoseGame();
+        history.goBack();
+    };
+
+    return (
         <>
             <h1>
-                Enter your game here.
+                Play
             </h1>
 
             <Form>
@@ -32,10 +37,24 @@ export const Play = ({
                     <Form.Control type="number" placeholder="Enter game score" />
                 </Form.Group>
 
+                <Button
+                    onClick={winGame}
+                >
+                    Win
+                </Button>
+                &nbsp;
+                <Button
+                    onClick={loseGame}
+                >
+                    Lose
+                </Button>
+
                 <Button variant="primary" type="submit">
                     Submit
                 </Button>
             </Form>
+
+            
         </>
-    )
-}
+    );
+};
