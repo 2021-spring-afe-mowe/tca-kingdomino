@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
@@ -12,7 +12,7 @@ export const Play = ({
     const history = useHistory();
 
     const winGame = () => {
-        appWinGame();
+        appWinGame(name);
         history.goBack();
 
     };
@@ -20,6 +20,12 @@ export const Play = ({
     const loseGame = () => {
         appLoseGame();
         history.goBack();
+    };
+
+    const [name, updateName] = useState("");
+
+    const nameChanged = (e) => {
+        updateName(e.target.value);
     };
 
     return (
@@ -31,7 +37,7 @@ export const Play = ({
             <Form>
                 <Form.Group controlId="formName">
                     <Form.Label>Name</Form.Label>
-                    <Form.Control type="text" placeholder="Enter name" />
+                    <Form.Control value={name} onChange={nameChanged} type="text" placeholder="Enter name" />
                 </Form.Group>
 
                 <Form.Group controlId="formGameScore">
