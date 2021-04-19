@@ -48,8 +48,8 @@ function App() {
     console.log("App.startGame()", appData.currentGameStartTime);
   }
 
-  const winGame = (name) => {
-    console.log(name);
+  const winGame = (name, score) => {
+    console.log(name, score);
     updateAppData({
       ...appData
       , gameResults: [
@@ -60,9 +60,6 @@ function App() {
           , gameResult: "W"
           , playerName: name
           , playerScore: score
-          , numberOfGames: games
-          , numberOfWins: wins
-          , numberOfLosses: losses
         }
       ]
     });

@@ -12,7 +12,7 @@ export const Play = ({
     const history = useHistory();
 
     const winGame = () => {
-        appWinGame(name);
+        appWinGame(name, score);
         history.goBack();
 
     };
@@ -24,9 +24,15 @@ export const Play = ({
 
     const [name, updateName] = useState("");
 
+    const [score, updateScore] = useState("");
+
     const nameChanged = (e) => {
         updateName(e.target.value);
     };
+
+    const scoreChanged = (e) => {
+        updateScore(e.target.value);
+    }
 
     return (
         <>
@@ -42,7 +48,7 @@ export const Play = ({
 
                 <Form.Group controlId="formGameScore">
                     <Form.Label>Score</Form.Label>
-                    <Form.Control type="number" placeholder="Enter game score" />
+                    <Form.Control value={score} onChange={scoreChanged} type="number" placeholder="Enter game score" />
                 </Form.Group>
 
                 <Button
