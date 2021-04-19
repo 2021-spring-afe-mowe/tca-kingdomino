@@ -18,7 +18,7 @@ export const Play = ({
     };
 
     const loseGame = () => {
-        appLoseGame();
+        appLoseGame(name, score);
         history.goBack();
     };
 
