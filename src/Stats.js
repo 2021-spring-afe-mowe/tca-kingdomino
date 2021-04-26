@@ -13,11 +13,11 @@ export const Stats = ({
     return(
         <>
         <h2>
-            Games: ({totalNumberOfGames})
+            {totalNumberOfGames} Games
             <br/>
-            Wins: ({totalNumberOfWins})
+            {totalNumberOfWins} Wins
             <br/>
-            Losses: ({totalNumberOfLosses})
+            {totalNumberOfLosses} Losses
         </h2>
         </>
     );

@@ -48,7 +48,7 @@ function App() {
     console.log("App.startGame()", appData.currentGameStartTime);
   }
 
-  const winGame = (name, score) => {
+  const winGame = (name, score, oneCrown, twoCrown, threeCrown) => {
     updateAppData({
       ...appData
       , gameResults: [
@@ -59,6 +59,9 @@ function App() {
           , gameResult: "W"
           , playerName: name
           , playerScore: score
+          , "# of Single Crowns:": oneCrown
+          , "# of Double Crowns:": twoCrown
+          , "# of Triple Crowns:": threeCrown
         }
       ]
     });
@@ -114,12 +117,6 @@ function App() {
               <Nav.Link as="a" to="/stats">Stats</Nav.Link>
             </Nav.Item>
             </LinkContainer>
-       
-            <LinkContainer to="/leaderboard">
-            <Nav.Item as="li">
-              <Nav.Link as="a" to="/leaderboard"> Leaderboard</Nav.Link>
-            </Nav.Item>        
-            </LinkContainer>
 
     </Nav>
   </Navbar>
@@ -135,6 +132,7 @@ function App() {
             <Route path="/stats">
               <Stats 
                 totalNumberOfGames={appData.gameResults.length}
+               // totalNumberOfWins={appData.gameWins.length}
               />
             </Route>
             <Route path="/play">
