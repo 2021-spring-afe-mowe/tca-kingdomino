@@ -33,9 +33,6 @@ function App() {
     , currentGameStartTime: null
   };
 
-  let winCount = 0;
-  let loseCount = 0;
-
   const [appData, updateAppData] = useState(initialAppData);
 
   console.log(appData);
@@ -51,7 +48,7 @@ function App() {
     console.log("App.startGame()", appData.currentGameStartTime);
   }
 
-  const winGame = (name, score, oneCrown, twoCrown, threeCrown, winCount, loseCount) => {
+  const winGame = (name, score, oneCrown, twoCrown, threeCrown) => {
     updateAppData({
       ...appData
       , gameResults: [
@@ -62,18 +59,16 @@ function App() {
           , gameResult: "W"
           , playerName: name
           , playerScore: score
-          , "# of Single Crowns:": oneCrown
-          , "# of Double Crowns:": twoCrown
-          , "# of Triple Crowns:": threeCrown
-          , "Wins: ": winCount
-          , "Losses: ": loseCount
+          , singleCrownCount: oneCrown
+          , doubleCrownCount: twoCrown
+          , tripleCrownCount: threeCrown
         }
       ]
     });
     console.log(appData);
   }
 
-  const loseGame = (name, score, oneCrown, twoCrown, threeCrown, winCount, loseCount) => {
+  const loseGame = (name, score, oneCrown, twoCrown, threeCrown) => {
     updateAppData({
       ...appData
       , gameResults: [
@@ -87,8 +82,6 @@ function App() {
           , "# of Single Crowns:": oneCrown
           , "# of Double Crowns:": twoCrown
           , "# of Triple Crowns:": threeCrown
-          , "Wins: ": winCount
-          , "Losses: ": loseCount
         }
       ]
     })
@@ -137,11 +130,10 @@ function App() {
 <Container className="p-3">
       <Jumbotron>
         <h1 className="header">Welcome to Kingdomino Companion App</h1>
-        <h2>
           <Switch>
             <Route path="/stats">
               <Stats 
-                totalNumberOfGames={appData.gameResults.length}
+                allGameResults={appData.gameResults}
               />
             </Route>
             <Route path="/play">
@@ -161,7 +153,6 @@ function App() {
           />
             </Route>
           </Switch>
-        </h2>
       </Jumbotron>
     </Container>
   </MemoryRouter>
