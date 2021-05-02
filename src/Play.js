@@ -5,6 +5,10 @@ import Form from 'react-bootstrap/Form';
 import ReactDOM from 'react-dom';
 import Image from 'react-bootstrap/Image';
 import Col from 'react-bootstrap/Image';
+import App from './App.js';
+
+let winCount = 0;
+let loseCount = 0;
 
 export const Play = ({
     appWinGame
@@ -14,14 +18,17 @@ export const Play = ({
     const history = useHistory();
 
     const winGame = () => {
-        appWinGame(name, score, oneCrown. twoCrown, threeCrown);
+        appWinGame(name, score, oneCrown, twoCrown, threeCrown, winCount, loseCount);
         history.goBack();
-
+        winCount = winCount + 1;
+//        winCountChanged();
     };
 
     const loseGame = () => {
-        appLoseGame(name, score);
+        appLoseGame(name, score, oneCrown, twoCrown, threeCrown, winCount, loseCount);
         history.goBack();
+        loseCount = loseCount + 1;
+//        loseCountChanged();
     };
 
     const [name, updateName] = useState("");
@@ -33,6 +40,10 @@ export const Play = ({
     const [twoCrown, updateTwoCrown] = useState("");
 
     const [threeCrown, updateThreeCrown] = useState("");
+
+//    let [loseCount, updateLoseCount] = useState("");
+
+//    let [winCount, updateWinCount] = useState("");
 
     const nameChanged = (e) => {
         updateName(e.target.value);
@@ -48,15 +59,21 @@ export const Play = ({
 
     const twoCrownChanged = (e) => {
         updateTwoCrown(e.target.value);
-     }
+    }
 
-     const threeCrownChanged = (e) => {
+    const threeCrownChanged = (e) => {
         updateThreeCrown(e.target.value);
-     }
+    }
 
-    //const gameWon = () => {
-      //  updateWins
-    //}
+//    const winCountChanged = (e) => {
+//        winCount = winCount + 1;
+//        updateWinCount(e.target.value);
+//    }
+
+//    const loseCountChanged = (e) => {
+//        loseCount = loseCount + 1;
+//        updateLoseCount(e.target.value);
+//    }
 
     return (
         <>

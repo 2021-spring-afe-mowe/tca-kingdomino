@@ -33,6 +33,9 @@ function App() {
     , currentGameStartTime: null
   };
 
+  let winCount = 0;
+  let loseCount = 0;
+
   const [appData, updateAppData] = useState(initialAppData);
 
   console.log(appData);
@@ -48,7 +51,7 @@ function App() {
     console.log("App.startGame()", appData.currentGameStartTime);
   }
 
-  const winGame = (name, score, oneCrown, twoCrown, threeCrown) => {
+  const winGame = (name, score, oneCrown, twoCrown, threeCrown, winCount, loseCount) => {
     updateAppData({
       ...appData
       , gameResults: [
@@ -62,13 +65,15 @@ function App() {
           , "# of Single Crowns:": oneCrown
           , "# of Double Crowns:": twoCrown
           , "# of Triple Crowns:": threeCrown
+          , "Wins: ": winCount
+          , "Losses: ": loseCount
         }
       ]
     });
     console.log(appData);
   }
 
-  const loseGame = (name, score) => {
+  const loseGame = (name, score, oneCrown, twoCrown, threeCrown, winCount, loseCount) => {
     updateAppData({
       ...appData
       , gameResults: [
@@ -79,6 +84,11 @@ function App() {
           , gameResult: "L"
           , playerName: name
           , playerScore: score
+          , "# of Single Crowns:": oneCrown
+          , "# of Double Crowns:": twoCrown
+          , "# of Triple Crowns:": threeCrown
+          , "Wins: ": winCount
+          , "Losses: ": loseCount
         }
       ]
     })
@@ -132,7 +142,6 @@ function App() {
             <Route path="/stats">
               <Stats 
                 totalNumberOfGames={appData.gameResults.length}
-               // totalNumberOfWins={appData.gameWins.length}
               />
             </Route>
             <Route path="/play">

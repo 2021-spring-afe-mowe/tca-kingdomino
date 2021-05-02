@@ -1,13 +1,16 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
-import gameResults from './App.js'
+import gameResults from './App.js';
+import appData from './App.js';
 
 export const Stats = ({
     totalNumberOfGames
-    , totalNumberOfWins
-    , totalNumberOfLosses
+    , winCount
+    , loseCount
 }) => {
+
+    console.log("From stats page: Wins " + winCount);
 
     const history = useHistory();
 
@@ -16,9 +19,9 @@ export const Stats = ({
         <h2>
             {totalNumberOfGames} Games
             <br/>
-            {totalNumberOfWins} Wins
+            {winCount} Wins
             <br/>
-            {totalNumberOfLosses} Losses
+            {loseCount} Losses
         </h2>
         <br />
         <h2> Recent Games </h2>
