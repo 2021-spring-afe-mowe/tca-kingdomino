@@ -10,6 +10,10 @@ export const Stats = ({
     const mostRecentWin = wins[wins.length - 1];
     console.log(mostRecentWin);
 
+    const loss = allGameResults.filter(x => x.gameResult == "L");
+    const mostRecentLoss = wins[loss.length - 1];
+    console.log(mostRecentLoss);
+
     return(
         <>
             <h2>
@@ -51,6 +55,23 @@ export const Stats = ({
             <h3>
                 Most Recent Loss: 
             </h3>
+            <ul>
+                <li>
+                    Name: { mostRecentLoss.playerName }
+                </li>
+                <li>
+                    Score: { mostRecentLoss.playerScore }
+                </li>
+                <li>
+                    Single crowns: { mostRecentLoss.singleCrownCount }
+                </li>
+                <li>
+                    Double crowns: { mostRecentLoss.doubleCrownCount }
+                </li>
+                <li>
+                    Triple crowns: { mostRecentLoss.tripleCrownCount } 
+                </li>
+            </ul>   
             <p>
                 Coming soon ! ! !
             </p>
