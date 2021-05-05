@@ -11,7 +11,7 @@ export const Stats = ({
     console.log(mostRecentWin);
 
     const loss = allGameResults.filter(x => x.gameResult == "L");
-    const mostRecentLoss = wins[loss.length - 1];
+    const mostRecentLoss = loss[loss.length - 1];
     console.log(mostRecentLoss);
 
     return(
@@ -19,11 +19,9 @@ export const Stats = ({
             <h2>
                 { allGameResults.length } Games
             </h2>
-            <br/>
             <h2>
                 { allGameResults.filter(x => x.gameResult == "W").length } Wins
             </h2>
-            <br/>
             <h2>
                 { allGameResults.filter(x => x.gameResult == "L").length } Losses
             </h2>
@@ -72,9 +70,6 @@ export const Stats = ({
                     Triple crowns: { mostRecentLoss.tripleCrownCount } 
                 </li>
             </ul>   
-            <p>
-                Coming soon ! ! !
-            </p>
         </>
     );
 }
